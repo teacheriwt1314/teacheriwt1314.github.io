@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Speaking | Domina el Inglés en 12 Semanas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --vino: #7B1E3A;
+      --vino-claro: #9D2C4D;
+      --gris: #ECECEC;
+      --azul-gris: #4A5C6A;
+      --blanco: #FFFFFF;
+      --petroleo: #276678;
+      --petroleo-claro: #3A8EA5;
+      --acento: #D4A59A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--gris);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--vino), var(--azul-gris));
+      color: var(--blanco);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(123, 30, 58, 0.3);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80');
+      background-size: cover;
+      background-position: center;
+      color: var(--blanco);
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--blanco);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .countdown {
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      padding: 1.5rem;
+      border-radius: 10px;
+      display: inline-block;
+      margin: 2rem auto;
+    }
+
+    .countdown h3 {
+      color: var(--blanco);
+      margin-bottom: 1rem;
+    }
+
+    #timer {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    #timer div {
+      background: var(--vino);
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.5rem;
+      min-width: 80px;
+    }
+
+    /* Benefits - NUEVO DISEÑO */
+    .benefits {
+      padding: 5rem 2rem;
+      background: linear-gradient(to bottom, var(--gris) 60%, var(--blanco) 100%);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--vino);
+      font-size: 2.2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--petroleo);
+      margin: 0.5rem auto;
+    }
+
+    .benefits-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .benefit-main-card {
+      background: var(--vino);
+      color: var(--blanco);
+      border-radius: 15px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(123, 30, 58, 0.3);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .benefit-main-card::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .benefit-main-card h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .benefit-main-card .highlight {
+      color: var(--acento);
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .benefit-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .benefit-feature {
+      display: flex;
+      align-items: flex-start;
+      background: var(--blanco);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--petroleo);
+    }
+
+    .benefit-feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      color: var(--vino);
+      margin-right: 1.2rem;
+      min-width: 40px;
+    }
+
+    .feature-content h3 {
+      color: var(--azul-gris);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Pricing */
+    .pricing {
+      background: linear-gradient(135deg, var(--petroleo), var(--azul-gris));
+      color: var(--blanco);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .price {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: var(--blanco);
+      margin: 1rem 0;
+    }
+
+    .price span {
+      font-size: 1.5rem;
+      font-weight: normal;
+    }
+
+    .schedule {
+      margin: 2rem auto;
+      max-width: 600px;
+    }
+
+    .schedule-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.8rem 0;
+      font-size: 1.1rem;
+    }
+
+    .schedule-item i {
+      margin-right: 1rem;
+      color: var(--blanco);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 4rem 2rem;
+      background: var(--gris);
+    }
+
+    .testimonial-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--blanco);
+      border-radius: 10px;
+      padding: 2rem;
+      width: 350px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-size: 5rem;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      color: rgba(123, 30, 58, 0.1);
+      font-family: serif;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      font-weight: bold;
+      color: var(--vino);
+    }
+
+    /* CTA Button */
+    .cta-button {
+      display: inline-block;
+      background: var(--vino);
+      color: var(--blanco);
+      font-weight: bold;
+      padding: 1.2rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(123, 30, 58, 0.4);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background: var(--vino-claro);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(123, 30, 58, 0.6);
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50px;
+      width: auto;
+      padding: 0.8rem 1.5rem 0.8rem 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    }
+
+    .whatsapp-float i {
+      font-size: 2rem;
+      margin-right: 0.8rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--azul-gris);
+      color: var(--blanco);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* Versículo bíblico */
+    .bible-verse {
+      margin: 1.5rem auto 0;
+      padding: 1.2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      max-width: 600px;
+      border-left: 3px solid var(--acento);
+    }
+
+    .bible-verse p {
+      color: var(--blanco);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .bible-verse strong {
+      color: var(--acento);
+      font-style: normal;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .benefits-container {
+        grid-template-columns: 1fr;
+      }
+      
+      #timer {
+        flex-wrap: wrap;
+      }
+
+      .bible-verse {
+        margin: 1rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>You Speaking</h1>
+    <p>Clases 100% personalizadas para dominar el inglés hablado</p>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>¡Habla inglés con confianza en solo 12 semanas!</h2>
+      <p>Grupos reducidos de máximo 10 personas | Clases 100% prácticas y divertidas</p>
+      
+      <div class="countdown">
+        <h3>¡Oferta por tiempo limitado!</h3>
+        <div id="timer">
+          <div><span id="days">00</span>Días</div>
+          <div><span id="hours">00</span>Horas</div>
+          <div><span id="minutes">00</span>Min</div>
+        </div>
+      </div>
+      
+      <a href="#pricing" class="cta-button animate">¡Quiero mi clase de prueba!</a>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <h2 class="section-title">Nuestra Metodología Única</h2>
+    <div class="benefits-container">
+      <div class="benefit-main-card animate" style="animation-delay: 0.1s;">
+        <h2>Habla inglés <span class="highlight">desde el primer día</span></h2>
+        <p>Con nuestro sistema "Full Immersion", lograrás pensar en inglés naturalmente</p>
+      </div>
+
+      <div class="benefit-features">
+        <div class="benefit-feature animate" style="animation-delay: 0.3s;">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="feature-content">
+            <h3>Grupos Exclusivos</h3>
+            <p>Solo 10 estudiantes por clase para máxima participación</p>
+          </div>
+        </div>
+
+        <div class="benefit-feature animate" style="animation-delay: 0.5s;">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="feature-content">
+            <h3>Sesiones Dinámicas</h3>
+            <p>Juegos de roles, debates espontáneos y retos semanales</p>
+          </div>
+        </div>
+
+        <div class="benefit-feature animate" style="animation-delay: 0.7s;">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="feature-content">
+            <h3>Progreso Garantizado</h3>
+            <p>Evaluaciones personalizadas cada 2 semanas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <h2 class="section-title" style="color: white;">Inversión</h2>
+    <div class="price">$25<span>/mes</span></div>
+    <p>Menos de $1 por día por fluidez en inglés</p>
+    
+    <div class="schedule">
+      <h3>Horarios Disponibles</h3>
+      <div class="schedule-item">
+        <i class="fas fa-clock"></i>
+        <span>7:00 AM - 8:00 AM (GMT-6)</span>
+      </div>
+      <div class="schedule-item">
+        <i class="fas fa-clock"></i>
+        <span>8:00 AM - 9:00 AM (GMT-6)</span>
+      </div>
+      <div class="schedule-item">
+        <i class="fas fa-clock"></i>
+        <span>9:00 AM - 10:00 AM (GMT-6)</span>
+      </div>
+    </div>
+    
+    <a href="https://wa.me/50377519190?text=¡Quiero%20mi%20clase%20de%20prueba%20en%20You%20Speaking!" class="cta-button animate" target="_blank" style="animation-delay: 0.7s;">
+      <i class="fab fa-whatsapp"></i> ¡Reserva tu cupo!
+    </a>
+  </section>
+
+  <section class="testimonials">
+    <h2 class="section-title">Testimonios Reales</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card animate" style="animation-delay: 0.2s;">
+        <p class="testimonial-text">"En solo 3 meses pasé de tartamudear a tener entrevistas de trabajo en inglés. ¡Las clases son adictivas!"</p>
+        <p class="testimonial-author">- Laura M., Diseñadora Gráfica</p>
+      </div>
+      <div class="testimonial-card animate" style="animation-delay: 0.4s;">
+        <p class="testimonial-text">"Nunca imaginé que aprender inglés podría ser tan divertido. Los juegos y retos semanales son lo mejor."</p>
+        <p class="testimonial-author">- Carlos V., Estudiante</p>
+      </div>
+      <div class="testimonial-card animate" style="animation-delay: 0.6s;">
+        <p class="testimonial-text">"Por fin encontré un método donde realmente hablo el 90% del tiempo. ¡Diego es un coach increíble!"</p>
+        <p class="testimonial-author">- Ana S., Ejecutiva de Ventas</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="bible-verse">
+      <p><strong>Daniel 1:17</strong> - "A estos cuatro muchachos Dios les dio conocimiento e inteligencia en todas las letras y ciencias..."</p>
+    </div>
+    <p>&copy; 2025 You Speaking | Todos los derechos reservados</p>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">
+      <i class="fas fa-globe-americas"></i> Clases online via Zoom o Teams
+    </p>
+  </footer>
+
+  <a href="https://wa.me/50377519190?text=¡Quiero%20más%20información%20sobre%20You%20Speaking!" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i> ¡Chatea con nosotros!
+  </a>
+
+  <script>
+    // Countdown Timer (72 hours)
+    const countdown = () => {
+      const now = new Date();
+      const targetDate = new Date(now.getTime() + 72 * 60 * 60 * 1000);
+      
+      const timer = setInterval(() => {
+        const now = new Date();
+        const diff = targetDate - now;
+        
+        if (diff <= 0) {
+          clearInterval(timer);
+          return;
+        }
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = Math.floor(hours).toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = Math.floor(minutes).toString().padStart(2, '0');
+      }, 1000);
+    };
+    
+    // Scroll Animations
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.animate');
+      elements.forEach(el => {
+        const elTop = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elTop < windowHeight - 100) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      countdown();
+      window.addEventListener('scroll', animateOnScroll);
+      animateOnScroll();
+    });
+  </script>
+</body>
+</html>
